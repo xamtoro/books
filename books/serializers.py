@@ -37,14 +37,3 @@ class BookSerializer(serializers.Serializer):
     #     read_only=True,
     #     help_text="The unique identifier of the book."
     # )
-
-class UserSerializer(serializers.Serializer):
-
-    email = serializers.EmailField(required=True)  # Validación de formato de email
-    password = serializers.CharField(required=True, write_only=True)  # Contraseña requerida
-
-    def validate_email(self, value):
-        # Asegura que el email esté bien formateado
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", value):
-            raise serializers.ValidationError("El email no tiene un formato válido.")
-        return value

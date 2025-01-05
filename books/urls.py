@@ -12,11 +12,8 @@ router = DefaultRouter()
 router.register(r'books', BookViewSet, basename='book')
 
 urlpatterns = [
-    # Endpoint para registro
     path('auth/register/', register, name='register'),
-    # Endpoint para obtener tokens (inicio de sesión)
     path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # Endpoint para refrescar el token
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
